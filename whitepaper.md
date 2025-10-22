@@ -216,7 +216,6 @@ Sub-networks maintain independent queues yet share global coordination through t
 | **Standard** | Solana SPL |
 | **Total Supply** | 1,000,000,000 |
 | **Launch** | 100% Public via Pump.fun |
-| **Vesting** | None |
 | **Pre-mine** | None |
 
 Hypernode’s economic model is entirely public from genesis — no insider allocations, ensuring decentralization and trust.
