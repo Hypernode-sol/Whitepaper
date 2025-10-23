@@ -356,5 +356,5 @@ The system merges blockchain verification, distributed AI coordination, and econ
 
 ---
 
-**Website:** [www.hypernode.org](http://www.hypernode.org)  
+**Website:** [www.hypernode.org](http://www.hypernodesolana.org)  
 **Tagline:** *Owned by No One. Powered by Everyone.*
