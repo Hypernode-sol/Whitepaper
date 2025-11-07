@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this whitepaper in your research, please cite it as below."
+authors:
+  - family-names: "Hypernode"
+    name: "Hypernode Team"
+title: "Hypernode: Decentralized GPU Compute Marketplace on Solana"
+version: 2.0
+date-released: 2025-03-01
+url: "https://github.com/Hypernode-sol/Whitepaper"
+repository-code: "https://github.com/Hypernode-sol"
+keywords:
+  - blockchain
+  - solana
+  - gpu computing
+  - decentralized marketplace
+  - x402 protocol
+  - smart contracts
+  - compute sharing
+  - AI infrastructure
+license: MIT
+abstract: >
+  Hypernode is a decentralized marketplace for GPU compute resources
+  built on the Solana blockchain. It enables users to rent GPU power
+  for AI training, inference, rendering, and compute-intensive tasks
+  while allowing GPU providers to monetize their idle hardware. The
+  system implements a trustless payment protocol (x402), facilitator-based
+  escrow, oracle verification, and Docker-isolated execution to create a
+  secure, efficient, and verifiable compute marketplace.
