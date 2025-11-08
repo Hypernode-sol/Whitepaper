@@ -39,7 +39,6 @@ Unlike centralized cloud providers, Hypernode operates as a peer-to-peer network
 12. [Security Model](#12-security-model)
 13. [Technical Specifications](#13-technical-specifications)
 14. [Deployment & Operations](#14-deployment--operations)
-15. [Roadmap](#15-roadmap)
 
 ---
 
@@ -1941,62 +1940,6 @@ Bridge Contract               │            (5) Burn SPL Token
 
 ---
 
-## 15. Roadmap
-
-### Phase 1: Foundation (Q4 2024 - Q1 2025) ✅
-
-- [x] Core protocol design
-- [x] Smart contract development (Anchor)
-- [x] x402 payment protocol integration
-- [x] Facilitator escrow system
-- [x] Oracle verification service
-- [x] Docker-based execution
-- [x] Frontend dashboard (React)
-- [x] Backend API (Express + PostgreSQL)
-- [x] Node client (Python)
-- [x] Mainnet launch
-
-### Phase 2: Platform Expansion (Q1 - Q2 2025) 🚧
-
-- [x] LLM deployment platform (beta)
-- [ ] OpenAI-compatible API (GA)
-- [ ] Load balancing for LLM inference
-- [ ] Auto-scaling based on demand
-- [ ] Enhanced monitoring and metrics
-- [ ] Reputation system for nodes
-- [ ] Advanced job scheduling
-
-### Phase 3: Cross-Chain & Decentralization (Q2 - Q3 2025) ⏳
-
-- [ ] Bridge-Base-Solana (token bridging)
-- [ ] Cross-chain message passing
-- [ ] Multi-sig oracle (3-of-5)
-- [ ] DAO governance launch
-- [ ] Token-weighted voting
-- [ ] On-chain parameter updates
-- [ ] Stake-weighted fee discounts
-
-### Phase 4: Advanced Features (Q3 - Q4 2025) 📋
-
-- [ ] Multi-node distributed jobs
-- [ ] Job result storage (IPFS/Arweave)
-- [ ] Private job execution (TEE support)
-- [ ] Custom runtime images
-- [ ] Job templates marketplace
-- [ ] Node performance benchmarking
-- [ ] Dynamic pricing algorithms
-
-### Phase 5: Ecosystem Growth (2026+) 🔮
-
-- [ ] Mobile app (iOS/Android)
-- [ ] Enterprise features (SLAs, dedicated nodes)
-- [ ] Additional blockchain integrations
-- [ ] Hardware acceleration (ASICs, FPGAs)
-- [ ] Decentralized storage integration
-- [ ] AI agent marketplace
-- [ ] Sub-network specializations (render, sim, AI)
-
----
 
 ## Conclusion
 
