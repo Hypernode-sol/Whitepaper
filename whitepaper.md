@@ -280,7 +280,9 @@ console.log('Transaction:', escrowResult.txSignature);
 
 ### 4.1 Architecture
 
-Hypernode implements a modular architecture with four specialized Anchor programs on Solana:
+Hypernode implements a modular architecture with **seven specialized Anchor programs** on Solana, consolidated in the [hypernode-llm-deployer](https://github.com/Hypernode-sol/hypernode-llm-deployer) repository.
+
+#### Core Layer (4 programs)
 
 #### hypernode-nodes
 **Purpose**: Node registry and reputation tracking
@@ -346,6 +348,60 @@ Hypernode implements a modular architecture with four specialized Anchor program
 **Distribution Formula**: `user_reward = (user_xnos / total_xnos) × accumulated_rewards`
 
 **Instructions**: `initialize_pool()`, `claim_rewards()`
+
+#### Governance & Security Layer (3 programs)
+
+#### hypernode-markets
+**Purpose**: Job pricing and market configuration
+
+**Key Features**:
+- Market initialization with configurable parameters
+- Job price management
+- Timeout configuration
+- Node stake minimum requirements
+- Total jobs and nodes tracking
+
+**Instructions**: `initialize_market()`, `update_config()`
+
+#### hypernode-slashing
+**Purpose**: Node penalty system for misbehavior
+
+**Key Features**:
+- Evidence-based slashing for timeouts, invalid results, offline nodes, or malicious behavior
+- Configurable slash percentages (basis points)
+- Slash cooldown periods
+- Stake reduction enforcement
+- Permanent record of slash events
+
+**Slash Reasons**:
+- `JobTimeout` - Node failed to complete job within deadline
+- `InvalidResult` - Proof verification failed
+- `Offline` - Node unresponsive to heartbeats
+- `MaliciousBehavior` - Detected fraud or attack
+
+**Instructions**: `initialize_config()`, `slash_node()`, `update_config()`
+
+#### hypernode-governance
+**Purpose**: Decentralized governance via DAO
+
+**Key Features**:
+- Proposal creation and voting
+- Quorum-based decision making (votes required for passing)
+- Time-locked proposal lifecycle (start/end times)
+- Vote choices: For, Against, Abstain
+- Weighted voting based on xNOS holdings
+- Executable proposals for parameter updates
+
+**Proposal States**:
+- `Draft` - Created but not yet active
+- `Active` - Open for voting
+- `Succeeded` - Passed quorum and majority
+- `Defeated` - Failed to pass
+- `Queued` - Awaiting execution
+- `Executed` - Changes applied on-chain
+- `Cancelled` - Withdrawn by proposer
+
+**Instructions**: `create_proposal()`, `vote()`, `execute_proposal()`, `cancel_proposal()`
 
 #### Program Interaction Flow
 

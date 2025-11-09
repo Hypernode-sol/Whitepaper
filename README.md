@@ -126,23 +126,31 @@ The Hypernode architecture follows four fundamental principles:
 └─────────────────────────────────────────────┘
 ```
 
+> **Note**: The blockchain layer consists of 7 specialized Anchor programs: **hypernode-nodes** (Node Registry), **hypernode-jobs** (Job Marketplace), **hypernode-staking**, **hypernode-rewards**, **hypernode-markets**, **hypernode-slashing**, and **hypernode-governance**. See [Section 4.1](#41-architecture) for detailed architecture.
+
 ### 2.2 Repository Structure
 
 The Hypernode project is organized into multiple repositories:
 
 **Core Infrastructure**:
-- `Hypernode-Site-App` - Main application (frontend, backend, smart contracts)
-- `hypernode-node-client` - Python worker client for compute nodes
-- `hypernode-automation-engine` - Job matching and orchestration
+- `hypernode-llm-deployer` - **Primary repository** with all 7 Solana programs, SDKs, and deployment tooling
+- `Hypernode-Site-App` - Main web application (React frontend, Express backend, x402 protocol)
+- `hypernode-automation-engine` - Job matching orchestration and workflow automation
 
-**Blockchain**:
-- `hypernode-core-protocol` - Solana smart contracts (Anchor)
+**Developer Tools**:
+- `hypernode-sdk-js` - JavaScript/TypeScript SDK for program interaction
+- `hypernode-sdk-python` - Python SDK for compute nodes
 
-**Platform Services**:
-- `hypernode-llm-deployer` - LLM deployment and hosting platform
-
-**Cross-Chain**:
+**Cross-Chain & Infrastructure**:
 - `Bridge-Base-Solana` - Solana ↔ Base interoperability layer
+- `Setup-for-Ubuntu` - Node operator setup scripts
+
+**Documentation**:
+- `Docs` - Technical documentation and guides
+- `Whitepaper` - This document
+
+**Deprecated**:
+- `hypernode-core-protocol` - ⚠️ Consolidated into `hypernode-llm-deployer`
 
 ### 2.3 Data Flow
 
@@ -281,23 +289,52 @@ console.log('Transaction:', escrowResult.txSignature);
 
 ### 4.1 Architecture
 
-Hypernode uses multiple Anchor programs on Solana:
+Hypernode implements a modular architecture with **7 specialized Anchor programs** on Solana, consolidated in the [hypernode-llm-deployer](https://github.com/Hypernode-sol/hypernode-llm-deployer) repository.
 
-**Facilitator Program**:
-- Payment escrow management
-- Oracle-verified proof submission
-- Automatic payment release
-- Node registration and staking
+#### Core Layer (4 programs)
 
-**Node Registry**:
-- On-chain node metadata
-- Reputation tracking
-- Staking requirements
+**hypernode-nodes** - Node Registry:
+- Hardware specs tracking (GPU, RAM, disk)
+- Reputation scoring based on job completion
+- Registration and heartbeat monitoring
+- Staking requirement validation
 
-**Payment Splitter**:
-- Revenue distribution
-- Fee collection
-- Reward allocation
+**hypernode-jobs** - Job Marketplace:
+- Trustless job-to-node matching via dynamic queue
+- IPFS-based job definitions and results
+- Escrow payment management
+- Automatic completion verification
+
+**hypernode-staking** - Time-Locked Staking:
+- xNOS token minting (staking receipt)
+- Time multipliers (14 days to 1 year)
+- Tier-based rewards (Bronze to Diamond)
+- Locked staking with early unlock penalties
+
+**hypernode-rewards** - Token Reflection Distribution:
+- O(1) reward distribution via reflection mechanism
+- Automatic proportional allocation
+- Gas-efficient reward claiming
+- Real-time balance updates
+
+#### Governance & Security Layer (3 programs)
+
+**hypernode-markets** - Trading & Liquidity:
+- Job pricing mechanisms
+- Market configuration
+- Fee structure management
+
+**hypernode-slashing** - Penalty System:
+- Slash nodes for timeout, invalid results, or malicious behavior
+- Evidence-based penalties
+- Cooldown periods
+- Stake reduction enforcement
+
+**hypernode-governance** - DAO:
+- Proposal creation and voting
+- Quorum-based decision making
+- Time-locked proposal execution
+- Community-driven parameter updates
 
 ### 4.2 Program Derived Addresses (PDAs)
 
